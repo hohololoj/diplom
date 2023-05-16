@@ -1,0 +1,34 @@
+mongoRequest(dbName, collectionName, requestType, range, request)
+<div class="edit-news-item">
+    <div class="edit-news-head">
+        <div class="title-container">
+            <p class="news-title">Заголовок</p>
+        </div>
+        <div class="date-container">
+            <p class="news-date">27.12.1010</p>
+        </div>
+        <img src="../icons/icon-delete.svg" alt="delete" class="news-edit-control-button news-delete-button">
+        <img src="../icons/icon-drop-down.svg" alt="drop-down" class="news-edit-control-button news-dropdown-button" state="closed">
+        <img src="../icons/icon-save.svg" alt="save" class="news-edit-control-button news-save-button">
+    </div>
+    <div class="edit-news-body">
+        <div class="edit-news-body-container">
+            <img src="../imgs/main-menu.jpg" alt="" class="edit-news-body-img">
+            <textarea cols="30" rows="10" class="edit-news-body-textarea"></textarea>
+        </div>
+    </div>
+</div>
+<div class="table">
+    <div class="table-head">
+        <p class="table-head-content">Стол №7</p>
+    </div>
+    <div class="table-body">
+        <p class="table-body-status table-body-status_booked table-body-status_shown">Забронирован:</p>
+        <p class="table-body-status table-body-status_unbooked">Стол не забронирован</p>
+        <div class="table-book-info-container">
+            <p class="table-book-info">9:00-10:00 <img src="./icons/icon-delete.svg" alt="delete" class="table-book-delete-button"></p>
+            <p class="table-book-info">11:00-12:00 <img src="./icons/icon-delete.svg" alt="delete" class="table-book-delete-button"></p>
+        </div>
+    </div>
+</div>
+1. Добавить обновления пункта меню

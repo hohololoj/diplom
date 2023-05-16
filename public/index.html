@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./index.css">
+    <title>Золотая рыбка Кумертау</title>
+</head>
+<body>
+    <section class="modal modal-booking">
+        <div class="modal-content modal-content-booking_nofree">
+            <h1 class="modal-content-title modal-content-title_booking-success">О нет!</h1>
+            <p class="booking-status-text">К сожалению мы не смогли найти подходящий вам стол<br>Попробуйте выбрать другое время</p>
+            <button class="booking-button-ok">Ок</button>
+        </div>
+        <div class="modal-content modal-content-booking_success">
+            <h1 class="modal-content-title modal-content-title_booking-success">Готово!</h1>
+            <p class="booking-status-text">Ваш стол под номером <span class="booking-table-number"></span> забронирован на <span class="booking-table-day"></span> на <span class="booking-table-time"></span></p>
+            <button class="booking-button-ok">Ок</button>
+        </div>
+        <div class="modal-content modal-content-booking modal-content-booking_shown">
+            <h1 class="modal-content-title modal-content-title_booking">Бронирование стола</h1>
+            <div class="booking-form-container">
+                <div class="input-select-container">
+                    <div class="input-select-head">
+                        <h2 class="input-select-title">День</h2>
+                        <img src="./icons/icon-drop-down.svg" alt="dropdown" class="input-select-arrow">
+                    </div>
+                    <div class="input-select-body">
+                        <div class="input-select-body-item" type="date" val="today">Сегодня</div>
+                        <div class="input-select-body-item" type="date" val="tomorrow">Завтра</div>
+                        <div class="input-select-body-item" type="date" val="select">Выбрать дату</div>
+                    </div>
+                </div>
+                <input type="date" class="table-input-date">
+                <div class="input-select-container">
+                    <div class="input-select-head">
+                        <h2 class="input-select-title">Время</h2>
+                        <img src="./icons/icon-drop-down.svg" alt="dropdown" class="input-select-arrow">
+                    </div>
+                    <div class="input-select-body">
+                        <div class="input-select-body-item" type="time" val="12:00-13:00">12:00-13:00</div>
+                        <div class="input-select-body-item" type="time" val="14:00-15:00">14:00-15:00</div>
+                        <div class="input-select-body-item" type="time" val="16:00-17:00">16:00-17:00</div>
+                        <div class="input-select-body-item" type="time" val="18:00-19:00">18:00-19:00</div>
+                        <div class="input-select-body-item" type="time" val="20:00-21:00">20:00-21:00</div>
+                        <div class="input-select-body-item" type="time" val="22:00-23:00">22:00-23:00</div>
+                        <div class="input-select-body-item" type="time" val="00:00-01:00">00:00-01:00</div>
+                        <div class="input-select-body-item" type="time" val="02:00-03:00">02:00-03:00</div>
+                    </div>
+                </div>
+                <input type="text" hidden class="select-input-element-date">
+                <input type="text" hidden class="select-input-element-time">
+                <button class="search-table-button">Найти</button>
+            </div>
+        </div>
+    </section>
+    <section class="modal modal-login">
+        <!-- Блок с содержимым для входа -->
+        <div class="modal-content modal-content-login modal-content_shown">
+            <h1 class="modal-content-title modal-content-title_login">Войдите или зарегистрируйтесь для продолжения</h1>
+            <div class="login-form-container">
+                <input type="text" class="modal-input login-input-login" placeholder="Логин">
+                <div class="password-container">
+                    <input type="password" class="modal-input modal-input_password login-input-password" placeholder="Пароль">
+                    <img src="./icons/password_on.svg" alt="password_on" class="password-action-button password-action-show">
+                    <img src="./icons/password_off.svg" alt="password_off" class="password-action-button password-action-hide">
+                </div>
+                <button class="login-button">Войти</button>
+                <div class="want-to-container">
+                    <p class="want-to-element want-to-change-password">Забыли пароль?</p>
+                    <p class="want-to-element want-to-register">Зарегистрироваться</p>
+                </div>
+            </div>
+        </div>
+         <!-- Блок с содержимым для регистрации -->
+        <div class="modal-content modal-content-register">
+            <h1 class="modal-content-title modal-content-title_register">Войдите или зарегистрируйтесь для продолжения</h1>
+            <div class="register-form-container">
+                <input type="text" class="modal-input register-input-surname" placeholder="Фамилия">
+                <input type="text" class="modal-input register-input-name" placeholder="Имя">
+                <input type="phone" class="modal-input register-input-phone" placeholder="Телефон" maxlength="11">
+                <input type="text" class="modal-input modal-input_date register-input-date" placeholder="Дата рождения" maxlength="10">
+                <input type="text" class="modal-input register-input-login" placeholder="Логин">
+                <div class="password-container">
+                    <input type="password" class="modal-input modal-input_password register-input-password" placeholder="Пароль">
+                    <img src="./icons/password_on.svg" alt="password_on" class="password-action-button password-action-show">
+                    <img src="./icons/password_off.svg" alt="password_off" class="password-action-button password-action-hide">
+                </div>
+                <button class="register-button">Зарегистрироваться</button>
+                <div class="want-to-container">
+                    <p class="want-to-element want-to-login">Войти</p>
+                </div>
+            </div>
+        </div>
+         <!-- Блок с содержимым для восстановления пароля -->
+        <div class="modal-content modal-content-restore">
+            <h1 class="modal-content-title modal-content-title_restore">Введите данные указанные при регистрации</h1>
+            <div class="restore-form-container">
+                <input type="text" class="modal-input restore-input-surname" placeholder="Фамилия">
+                <input type="text" class="modal-input restore-input-name" placeholder="Имя">
+                <input type="phone" class="modal-input restore-input-phone" placeholder="Телефон" maxlength="11">
+                <input type="text" class="modal-input modal-input_date restore-input-date" placeholder="Дата рождения" maxlength="10">
+                <input type="text" class="modal-input restore-input-login" placeholder="Логин">
+                <div class="password-container">
+                    <input type="password" class="modal-input modal-input_password restore-input-password" placeholder="Новый пароль">
+                    <img src="./icons/password_on.svg" alt="password_on" class="password-action-button password-action-show">
+                    <img src="./icons/password_off.svg" alt="password_off" class="password-action-button password-action-hide">
+                </div>
+                <button class="restore-button">Сменить пароль</button>
+                <div class="want-to-container">
+                    <p class="want-to-element want-to-login">Войти</p>
+                    <p class="want-to-element want-to-register">Зарегистрироваться</p>
+                </div>
+            </div>
+        </div>
+         <!-- Блок с уведомлением о том, что заявка на смену пароля была записана-->
+        <div class="modal-content modal-content_success">
+            <h1 class="modal-success-title">Готово!</h1>
+            <p class="modal-success-text">Наш сотрудник проверит введенные данные и<br>свяжется с вами по телефону</p>
+            <button class="button-ok">Ок</button>
+        </div>
+    </section>
+    <header>
+        <div class="header-logo-container">
+            <img src="./icons/logo.svg" alt="logo">
+        </div>
+        <nav class="header-hav">
+            <button class="book-table-button">Забронировать стол <div class="book-button-bg"></div></button>
+            <button class="auth-button"><img src="./icons/icon-person.svg" alt="auth"></button>
+        </nav>
+    </header>
+    <section class="section-main">
+        <div class="title-container">
+            <h1 class="main-section-title">Кафе русской кухни<br>Золотая рыбка</h1>
+        </div>
+    </section>
+    <section class="section-menu">
+        <div class="menu-button main-menu-button" link="mains">
+            <p class="menu-button-text">Основное меню</p>
+        </div>
+        <div class="menu-button lunches-menu-button" link="bakery">
+            <p class="menu-button-text">Выпечка</p>
+        </div>
+        <div class="menu-button beer-menu-button" link="beers">
+            <p class="menu-button-text">Разливные напитки</p>
+        </div>
+        <div class="menu-button snacks-menu-button" link="snacks">
+            <p class="menu-button-text">Закуски</p>
+        </div>
+    </section>
+    <div class="short-info-block">
+        <div class="short-info-block-item">
+            <img src="./icons/icon-location.svg" alt="location" class="short-info-icon">
+            <p class="short-info-text">Г. Кумертау<br>ул. Пушкина 4А</p>
+        </div>
+        <div class="short-info-block-item">
+            <img src="./icons/icon-phone.svg" alt="phone" class="short-info-icon">
+            <p class="short-info-text">+7 (34761) 4-22-24</p>
+        </div>
+        <div class="short-info-block-item">
+            <img src="./icons/icon-schedule.svg" alt="schedule" class="short-info-icon">
+            <p class="short-info-text">Ежедневно<br>с 12:00 до 03:00</p>
+        </div>
+    </div>
+    <section class="section-news">
+        <h2 class="news-title">Новости</h2>
+        <div class="slider-container">
+            <div class="slider-line"></div>
+            <div class="arrows-container">
+                <img src="./icons/icon-arrow_left.svg" alt="arrow-left" class="slide-left-button">
+                <img src="./icons/icon-arrow_right.svg" alt="arrow-right" class="slide-right-button">
+            </div>
+        </div>
+    </section>
+    <section class="section-map">
+        <iframe width="100%" height="100%" 
+        scrolling="no" 
+        src="https://www.openstreetmap.org/export/embed.html?bbox=55.798208713531494%2C52.76090183949367%2C55.80322980880738%2C52.76317090035301&amp;layer=mapnik&amp;marker=52.76203456834179%2C55.800719261169434"></iframe>
+    </section>
+    <script src="./scripts/slider.js"></script>
+    <script src="./scripts/navigation.js"></script>
+    <script src="./scripts/auth.js"></script>
+    <script src="./scripts/booking.js"></script>
+    <script src="./scripts/select.js"></script>
+</body>
+</html>

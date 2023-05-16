@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./admin.css">
+    <title>Админ панель</title>
+</head>
+<body>
+    <header>
+        <div class="header-logo-container">
+            <img src="./icons/logo.svg" alt="logo">
+        </div>
+        <nav class="header-hav">
+            <a href="./admin.html#news" class="nav-item">Новости</a>
+            <a href="./admin.html#applications" class="nav-item">Заявки на смену данных</a>
+            <a href="./admin.html#tables" class="nav-item">Информация о столах</a>
+            <a href="./admin.html#menu" class="nav-item">Редактировать меню</a>
+            <a href="/?action=logout" class="nav-item">Выйти</a>
+        </nav>
+    </header>
+    <section class="section-edit-news" id="news">
+        <div class="edit-news-item add-news-button">
+            <div class="edit-news-head">Добавить новость</div>
+        </div>
+    </section>
+    <section class="section-applications" id="applications">
+        <div class="application-item" aid="">
+            <div class="application-item-head">
+                <p class="application-type">Заявка на смену данных</p>
+                <img src="./icons/icon-accept.svg" alt="" class="application-control-button application-accept-button">
+                <img src="./icons/icon-cancel.svg" alt="" class="application-control-button application-cancel-button">
+            </div>
+            <div class="application-item-body">
+                <div class="application-item-body-content application-item-body-content_change-data">
+                    <div class="data-container">
+                        <p class="data surname">Фамилия</p>
+                        <p class="data name">Имя</p>
+                        <p class="data phone">Телефон</p>
+                    </div>
+                    <div class="arrow-container">
+                        <img src="./icons/icon-arrow_to.svg" alt="arrow_to">
+                    </div>
+                    <div class="data-container">
+                        <p class="data surname">Фамилия</p>
+                        <p class="data name">Имя</p>
+                        <p class="data phone">Телефон</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="application-item">
+            <div class="application-item-head">
+                <p class="application-type">Заявка на смену пароля</p>
+                <img src="./icons/icon-accept.svg" alt="" class="application-control-button application-accept-button">
+                <img src="./icons/icon-cancel.svg" alt="" class="application-control-button application-cancel-button">
+            </div>
+            <div class="application-item-body">
+                <div class="application-item-body-content application-item-body-content_change-password">
+                    <div class="data-container">
+                        <p class="data surname">Фамилия</p>
+                        <p class="data name">Имя</p>
+                        <p class="data phone">Телефон</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-tables" id="tables">
+        <div class="date-selector">
+            <div class="dates-container">
+                <p class="tables-date tables-date_current">Сегодня</p>
+                <p class="tables-date">Завтра</p>
+                <p class="tables-date tables-date_select-date"><input type="date" class="table-input-date" value="Выбрать дату"></p>
+            </div>
+            <div class="open-dates-button"><img src="./icons/icon-drop-down.svg" alt="drop-down"></div>
+        </div>
+        <div class="tables-container"></div>
+    </section>
+    <section class="section-menu" id="menu">
+        <div class="section-menu-nav">
+            <div class="section-menu-nav-item-container" category="soups">
+                <p class="section-menu-nav-item">Супы</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="mains">
+                <p class="section-menu-nav-item">Основные</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="garnish">
+                <p class="section-menu-nav-item">Гарнир</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="salads">
+                <p class="section-menu-nav-item">Салаты</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="drinks">
+                <p class="section-menu-nav-item">Напитки</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="bakery">
+                <p class="section-menu-nav-item">Выпечка</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="beers">
+                <p class="section-menu-nav-item">Разливные напитки</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="snacks">
+                <p class="section-menu-nav-item">Закуски</p>
+            </div>
+        </div>
+        <div class="section-menu-body">
+            <div class="dishes-container dishes-container_soups dishes-container_active" category="soups"></div>
+            <div class="dishes-container dishes-container_mains" category="mains"></div>
+            <div class="dishes-container dishes-container_garnish" category="garnish"></div>
+            <div class="dishes-container dishes-container_salads" category="salads"></div>
+            <div class="dishes-container dishes-container_drinks" category="drinks"></div>
+            <div class="dishes-container dishes-container_bakery" category="bakery"></div>
+            <div class="dishes-container dishes-container_beers" category="beers"></div>
+            <div class="dishes-container dishes-container_snacks" category="snacks"></div>
+        </div>
+    </section>
+    <form class="add-dish-form" hidden>
+        <input type="text" class="dish-form-input-name" name="name">
+        <input type="text" class="dish-form-input-price" name="price">
+        <input type="file" class="dish-form-input-image" name="image">
+        <input type="text" class="dish-form-input-dish_id" name="dish_id">
+        <input type="text" class="dish-form-input-category" name="category">
+    </form>
+    <form class="add-news-form" hidden>
+        <input type="text" class="add-news-form_news-id" name="news_id">
+        <input type="text" class="add-news-form_title" name="title">
+        <input type="text" class="add-news-form_date" name="date">
+        <input type="file" class="add-news-form_img" name="img">
+        <input type="text" class="add-news-form_content" name="content">
+    </form>
+    <script src="./adminscripts/dropdown.js"></script>
+    <script src="./adminscripts/tables.js"></script>
+    <script src="./adminscripts/app.js" defer></script>
+</body>
+</html>

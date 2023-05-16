@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./menu.css">
+    <title>Меню</title>
+</head>
+<body>
+    <header>
+        <div class="header-logo-container">
+            <img src="./icons/logo.svg" alt="logo">
+        </div>
+        <nav class="header-hav">
+            <a href="/menu" class="header-nav-item">Меню</a>
+            <a href="/fullnews" class="header-nav-item">Новости</a>
+            <a href="/" class="header-nav-item">На главную</a>
+        </nav>
+    </header>
+    <section class="section-menu">
+        <div class="section-menu-nav">
+            <div class="section-menu-nav-item-container" category="soups">
+                <p class="section-menu-nav-item">Супы</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="mains">
+                <p class="section-menu-nav-item">Основные</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="garnish">
+                <p class="section-menu-nav-item">Гарнир</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="salads">
+                <p class="section-menu-nav-item">Салаты</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="drinks">
+                <p class="section-menu-nav-item">Напитки</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="bakery">
+                <p class="section-menu-nav-item">Выпечка</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="beers">
+                <p class="section-menu-nav-item">Разливные напитки</p>
+            </div>
+            <div class="section-menu-nav-item-container" category="snacks">
+                <p class="section-menu-nav-item">Закуски</p>
+            </div>
+        </div>
+        <div class="section-menu-body">
+            <div class="dishes-container dishes-container_soups dishes-container_active" category="soups"></div>
+            <div class="dishes-container dishes-container_mains" category="mains"></div>
+            <div class="dishes-container dishes-container_garnish" category="garnish"></div>
+            <div class="dishes-container dishes-container_salads" category="salads"></div>
+            <div class="dishes-container dishes-container_drinks" category="drinks"></div>
+            <div class="dishes-container dishes-container_bakery" category="bakery"></div>
+            <div class="dishes-container dishes-container_beers" category="beers"></div>
+            <div class="dishes-container dishes-container_snacks" category="snacks"></div>
+        </div>
+    </section>
+    <script src="./scripts/menu.js"></script>
+</body>
+</html>
