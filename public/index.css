@@ -43,6 +43,8 @@
     align-items: flex-start;
     padding-bottom: 50px;
     padding-left: 50px;
+    background-size: cover;
+    background-position: center;
 }
 .title-container{
     border-bottom: 3px solid var(--gold);

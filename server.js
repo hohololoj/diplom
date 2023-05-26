@@ -156,7 +156,6 @@ app.get('/admin', function(req, res){
     })
 })
 app.get('*', function(req, res, next){
-    // console.log(req.path)
     switch(req.path){
         case '/':{
             if(req.query.action == 'logout'){
@@ -211,7 +210,7 @@ app.get('*', function(req, res, next){
         //     break;
         // }
         case '/logout':{
-            res.clearCookie('admin').clearCookie('token');
+            res.clearCookie('admin').clearCookie('token').redirect('/');
         }
         case '/404':{
             res.sendFile(path.resolve('./public/404.html'));
@@ -271,7 +270,7 @@ async function writeTable(table, res){
         resolve()
     })
     .then(()=>{
-        res.send({status: 'success', table: table.number, time: table.time, day: `${table.day}.${table.month}`});
+        res.send({status: 'success', table: table.number, time: table.time, day: `${table.day < 10? '0'+table.day: table.day}.${table.month < 10? '0'+table.month : table.month}`});
     })
 }
 
@@ -778,7 +777,8 @@ app.post('*', function(req, res){
             let time_first = time.split('-')[0];
             let hoursMinutes = time_first.split(':');
             let hours = hoursMinutes[0];
-            console.log(today.getFullYear(), parseInt(date.month-1), parseInt(date.day), parseInt(hours), 0)
+            // console.log(today.getFullYear(), parseInt(date.month-1), parseInt(date.day), parseInt(hours), 0)
+            console.log(date)
             let thisTime = new Date(today.getFullYear(), parseInt(date.month-1), parseInt(date.day), parseInt(hours), 0);
             console.log(thisTime)
             console.log('thisTime.getMilliseconds(): ',thisTime.getTime());
@@ -796,7 +796,7 @@ app.post('*', function(req, res){
             .then((thisUser)=>{
                 let id = thisUser._id;
                 new Promise((resolve, reject) => {
-                    let tables = mongoRequest('diplom', 'tables', 'get', 'many', {day: date.day, month: date.month, time: time});
+                    let tables = mongoRequest('diplom', 'tables', 'get', 'many', {day: parseInt(date.day), month: parseInt(date.month), time: time});
                     resolve(tables);
                 })
                 .then((tables)=>{
@@ -818,8 +818,8 @@ app.post('*', function(req, res){
                             person: thisUser.surname+' '+thisUser.name,
                             personid: thisUser._id,
                             time: time,
-                            day: date.day,
-                            month: date.month,
+                            day: parseInt(date.day),
+                            month: parseInt(date.month),
                         }
                         writeTable(table, res);
                     }
@@ -832,8 +832,8 @@ app.post('*', function(req, res){
             break;
         }
         case 'getTables':{
-            let day = req.body.day;
-            let month = req.body.month;
+            let day = parseInt(req.body.day);
+            let month = parseInt(req.body.month);
 
             new Promise((resolve, reject) => {
                 let tables = mongoRequest('diplom', 'tables', 'get', 'many', {day: day, month: month});

@@ -25,13 +25,17 @@ searchTable_button.addEventListener('click', function(){
     let month = '';
     let year = '';
     if(date == ''){
+        console.log('кастом')
         date = inputDate_input.value;
+        console.log(inputDate_input.value)
         let dates = date.split('-');
         year = dates[0];
         month = dates[1];
         day = dates[2];
     }
     if(date == 'today'){
+        console.log('сегодня')
+
         let today = new Date();
         day = today.getDate();
         if(day < 10){day = '0'+day}
@@ -41,6 +45,8 @@ searchTable_button.addEventListener('click', function(){
         console.log(day, month, year);
     }
     if(date == 'tomorrow'){
+        console.log('завтра')
+
         let tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate()+1);
         day = tomorrow.getDate();
@@ -59,6 +65,7 @@ searchTable_button.addEventListener('click', function(){
         },
         time: time
     }
+    console.log(req)
     console.log(1)
     fetch('/?action=bookTable',{
         method: 'POST',
@@ -95,6 +102,7 @@ searchTable_button.addEventListener('click', function(){
                     let current = document.getElementsByClassName('modal-content-booking_shown')[0];
                     current.classList.remove('modal-content-booking_shown');
                     modalBookingSuccess.classList.add('modal-content-booking_shown');
+                    console.log(response)
                     bookingTable_number.innerText = response.table;
                     bookingTable_time.innerText = response.time;
                     bookingTable_day.innerText = response.day;
@@ -127,6 +135,7 @@ for(let i = 0; i < selectInputs.length; i++){
             }
             else{
                 inputDate_input.classList.add('table-input-date_shown');
+                inputDate.value = '';
             }
         }
         if(type == 'time'){

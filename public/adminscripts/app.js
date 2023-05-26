@@ -37,15 +37,33 @@ function init(){
         })
     }
     selectDate_buttons[0].addEventListener('click', function(){
+        let today = new Date();
+        let day = today.getDate();
+        let month = today.getMonth()+1;
+        getTables(day, month);
         hideCurrentDate()
         this.classList.add('tables-date_current')
     })
     selectDate_buttons[1].addEventListener('click', function(){
+        let today = new Date();
+        let tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate()+1);
+        let day = tomorrow.getDate();
+        let month = tomorrow.getMonth()+1;
+        getTables(day, month);
         hideCurrentDate()
         this.classList.add('tables-date_current')
         //завтра
     })
     selectDate_buttons[2].addEventListener('click', function(){
+        let table_dateInput = this.getElementsByTagName('input')[0];
+        table_dateInput.addEventListener('input', function(){
+            let date = this.value;
+            date = date.split('-');
+            let day = date[2];
+            let month = date[1];
+            getTables(day, month);
+        })
         hideCurrentDate()
         this.classList.add('tables-date_current')
         //выбрать дату
@@ -693,6 +711,58 @@ function getRestores(){
         }
     )
 }
+
+function showTables(tables){
+    tables_container.innerHTML = '';
+    let html = '';
+    for(let i = 0; i < 7; i++){
+        let table_html = `
+        <div class="table">
+            <div class="table-head">
+                <p class="table-head-content">Стол №${i+1}</p>
+            </div>
+            <div class="table-body">
+                <p class="table-body-status table-body-status_booked table-body-status_shown">${tables['table'+(i+1)].length > 0? 'Забронирован:': 'Стол не забронирован'}</p>
+                <div class="table-book-info-container">`;
+                for(let j = 0; j < tables['table'+(i+1)].length; j++){
+                    table_html += `
+                        <p class="table-book-info">${tables['table'+(i+1)][j].time} ${tables['table'+(i+1)][j].person} <img src="./icons/icon-delete.svg" alt="delete" class="table-book-delete-button" tableid="${tables['table'+(i+1)][j].id}"></p>
+                    `;
+                }
+        table_html += `
+            </div>
+        </div>
+    </div>`;
+        html += table_html;
+    }
+    tables_container.innerHTML = html;
+    let tableUnbook_buttons = document.getElementsByClassName('table-book-delete-button');
+    for(let i = 0; i < tableUnbook_buttons.length; i++){
+        tableUnbook_buttons[i].addEventListener('click', function(){
+            let books_container = this.parentNode.parentNode;
+            let thisBook = this.parentNode;
+            let books = books_container.getElementsByTagName('p');
+            let table_id = this.getAttribute('tableid');
+            fetch('/?action=unbook',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify({table_id: table_id})
+            })
+            .then(
+                function (response){
+                    if(books.length == 1){
+                        let tableStatus = books_container.parentNode.getElementsByClassName('table-body-status')[0];
+                        tableStatus.innerText = 'Стол не забронирован';
+                    }
+                    books_container.removeChild(thisBook);
+                }
+            )
+        })
+    }
+}
+
 function getTables(day, month){
     let date = {
         day: day,
@@ -708,54 +778,7 @@ function getTables(day, month){
     .then(
         function (response){
             response.json().then(function(tables){
-                console.log(tables)
-                let html = '';
-                for(let i = 0; i < 7; i++){
-                    let table_html = `
-                    <div class="table">
-                        <div class="table-head">
-                            <p class="table-head-content">Стол №${i+1}</p>
-                        </div>
-                        <div class="table-body">
-                            <p class="table-body-status table-body-status_booked table-body-status_shown">${tables['table'+(i+1)].length > 0? 'Забронирован:': 'Стол не забронирован'}</p>
-                            <div class="table-book-info-container">`;
-                            for(let j = 0; j < tables['table'+(i+1)].length; j++){
-                                table_html += `
-                                    <p class="table-book-info">${tables['table'+(i+1)][j].time} ${tables['table'+(i+1)][j].person} <img src="./icons/icon-delete.svg" alt="delete" class="table-book-delete-button" tableid="${tables['table'+(i+1)][j].id}"></p>
-                                `;
-                            }
-                    table_html += `
-                        </div>
-                    </div>
-                </div>`;
-                    html += table_html;
-                }
-                tables_container.innerHTML = html;
-                let tableUnbook_buttons = document.getElementsByClassName('table-book-delete-button');
-                for(let i = 0; i < tableUnbook_buttons.length; i++){
-                    tableUnbook_buttons[i].addEventListener('click', function(){
-                        let books_container = this.parentNode.parentNode;
-                        let thisBook = this.parentNode;
-                        let books = books_container.getElementsByTagName('p');
-                        let table_id = this.getAttribute('tableid');
-                        fetch('/?action=unbook',{
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json;charset=utf-8'
-                            },
-                            body: JSON.stringify({table_id: table_id})
-                        })
-                        .then(
-                            function (response){
-                                if(books.length == 1){
-                                    let tableStatus = books_container.parentNode.getElementsByClassName('table-body-status')[0];
-                                    tableStatus.innerText = 'Стол не забронирован';
-                                }
-                                books_container.removeChild(thisBook);
-                            }
-                        )
-                    })
-                }
+                showTables(tables);
             })
         }
     )

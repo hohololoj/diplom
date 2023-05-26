@@ -18,7 +18,7 @@
             <a href="./admin.html#applications" class="nav-item">Заявки на смену данных</a>
             <a href="./admin.html#tables" class="nav-item">Информация о столах</a>
             <a href="./admin.html#menu" class="nav-item">Редактировать меню</a>
-            <a href="/?action=logout" class="nav-item">Выйти</a>
+            <a href="/logout" class="nav-item">Выйти</a>
         </nav>
     </header>
     <section class="section-edit-news" id="news">
@@ -71,9 +71,9 @@
     <section class="section-tables" id="tables">
         <div class="date-selector">
             <div class="dates-container">
-                <p class="tables-date tables-date_current">Сегодня</p>
-                <p class="tables-date">Завтра</p>
-                <p class="tables-date tables-date_select-date"><input type="date" class="table-input-date" value="Выбрать дату"></p>
+                <p class="tables-date tables-date_current" date="today">Сегодня</p>
+                <p class="tables-date" date="tomorrow">Завтра</p>
+                <p class="tables-date tables-date_select-date" disabled date="custom"><input type="date" class="table-input-date" value="Выбрать дату"></p>
             </div>
             <div class="open-dates-button"><img src="./icons/icon-drop-down.svg" alt="drop-down"></div>
         </div>
